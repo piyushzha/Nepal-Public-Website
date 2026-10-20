@@ -1,0 +1,18 @@
+name = "npsbs-api"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# ── Cloudflare Pages serves the frontend ──────────────────────────────────────
+# This worker handles /api/* routes only
+
+[[d1_databases]]
+binding = "DB"
+database_name = "npsbs-db"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+
+[vars]
+JWT_SECRET = "npsbs-cf-secret-change-this-in-production"
+
+# For production, set secrets via:
+# wrangler secret put JWT_SECRET
